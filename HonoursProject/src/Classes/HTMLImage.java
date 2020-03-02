@@ -65,7 +65,7 @@ public class HTMLImage {
         URL = "";
         alt = "";
         width = 0;
-        height = 0;;
+        height = 0;
     }
     
     //Overloaded Constructor

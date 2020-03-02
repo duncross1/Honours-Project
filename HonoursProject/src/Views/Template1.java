@@ -7,6 +7,7 @@
 package Views;
 
 import Classes.HTMLImage;
+import Classes.HTMLText;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -19,7 +20,6 @@ import java.io.IOException;
 public class Template1 extends javax.swing.JFrame {
 
     String imageURL;
-    HTMLImage HTMLImage;
     String html;
     String pageName;
     String filePath;
@@ -116,17 +116,47 @@ public class Template1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreateHtmlImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateHtmlImageActionPerformed
+        
+        
+        HTMLText newHeader = new HTMLText("</h1>", "this is the header -- ijwanifwain");
+        HTMLText newPara = new HTMLText("</p>", "this is the paragraph -- aiwfnwaifnwaoignwa");
+        HTMLImage newImage = new HTMLImage("C:\\Users\\Ross\\Desktop\\HonoursTest\\bb.jpg", "the-image", 300, 325);
+        HTMLText newPara2 = new HTMLText("</p>", "this is the second paragraph -- awgwagwagwagiubuiwaobf");
+        
         imageURL = "C:\\Users\\Ross\\Desktop\\Unity Projects\\Neon Sprites\\Tiles\\unitest.png";
-        pageName = "Test";
-        filePath = "C:\\Users\\Ross\\Desktop\\UNIWork\\";
+        pageName = "Test2";
+        filePath = "C:\\Users\\Ross\\Desktop\\HonoursTest\\";
        // HTMLImage.setImageURL(imageURL);
-        html = "<html>\n" +
-        "<body>\n" +
-        "\n" +
-        "<h2>HTML Image</h2>\n" +
-        "<img src=\"" + imageURL + "\"alt=\"Trulli\" width=\"500\" height=\"333\">\n" +
-        "\n" +
-        "</body>\n" + "</html>";
+        html = "<!DOCTYPE html>\n" +
+"\n" +
+"<html>\n" +
+"<head>\n" +
+"\n" +
+"</head>\n" +
+"<body>\n" +
+"\n" +
+newHeader.getOpeningTag() + newHeader.getText() + newHeader.getTag() + "\n" +
+"\n" +
+"\n" +
+newPara.getOpeningTag() + newPara.getText() + newPara.getTag() + "\n" +
+"\n" +
+"\n" +
+"<img src=\"" + newImage.getImageURL() + "\"alt=\"" + newImage.getAlt() + "\" width=\"" + String.valueOf(newImage.getWidth()) + "\" height=\"" + String.valueOf(newImage.getHeight()) + "\">\n" +
+"\n" +
+newPara2.getOpeningTag() + newPara2.getText() + newPara2.getTag() + "\n" +
+"\n" +
+"\n" +
+"\n" +
+"\n" +
+"\n" +
+"\n" +
+"</body>\n" +
+"\n" +
+"\n" +
+"\n" +
+"\n" +
+"\n" +
+"</html>";
         File f = new File(filePath + pageName + ".html");
         try
         {
