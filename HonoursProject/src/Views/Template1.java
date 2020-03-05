@@ -12,6 +12,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -43,85 +44,92 @@ public class Template1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CreateHtmlImage = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        btnCreateHtmlImage = new javax.swing.JButton();
+        btnChooseFilePath = new javax.swing.JButton();
+        txtTitle = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txbBodyText1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txbBodyText2 = new javax.swing.JTextArea();
+        txtImagePath = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        CreateHtmlImage.setText("Create HTML image");
-        CreateHtmlImage.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateHtmlImage.setText("Create HTML image");
+        btnCreateHtmlImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateHtmlImageActionPerformed(evt);
+                btnCreateHtmlImageActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Select Image");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnChooseFilePath.setText("Select Image");
+        btnChooseFilePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnChooseFilePathActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("Insert Title");
+        txtTitle.setText("Insert Title");
 
-        jTextField2.setText("Insert Footer");
+        txbBodyText1.setColumns(20);
+        txbBodyText1.setRows(10);
+        txbBodyText1.setText("Insert Body Text");
+        jScrollPane1.setViewportView(txbBodyText1);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(10);
-        jTextArea1.setText("Insert Body Text");
-        jScrollPane1.setViewportView(jTextArea1);
+        txbBodyText2.setColumns(20);
+        txbBodyText2.setRows(5);
+        txbBodyText2.setText("Inser Body Text 2");
+        jScrollPane2.setViewportView(txbBodyText2);
+
+        txtImagePath.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCreateHtmlImage, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
-                .addContainerGap(307, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(CreateHtmlImage, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69))
+                        .addComponent(btnChooseFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(CreateHtmlImage)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChooseFilePath)
+                    .addComponent(txtImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(btnCreateHtmlImage)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CreateHtmlImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateHtmlImageActionPerformed
+    private void btnCreateHtmlImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHtmlImageActionPerformed
         
         
-        HTMLText newHeader = new HTMLText("</h1>", "this is the header -- ijwanifwain");
-        HTMLText newPara = new HTMLText("</p>", "this is the paragraph -- aiwfnwaifnwaoignwa");
-        HTMLImage newImage = new HTMLImage("C:\\Users\\Ross\\Desktop\\HonoursTest\\bb.jpg", "the-image", 300, 325);
-        HTMLText newPara2 = new HTMLText("</p>", "this is the second paragraph -- awgwagwagwagiubuiwaobf");
+        HTMLText newHeader = new HTMLText("</h1>", txtTitle.getText());
+        HTMLText newPara = new HTMLText("</p>", txbBodyText1.getText());
+        HTMLImage newImage = new HTMLImage(txtImagePath.getText(), "the-image", 300, 325);
+        HTMLText newPara2 = new HTMLText("</p>", txbBodyText2.getText());
         
         imageURL = "C:\\Users\\Ross\\Desktop\\Unity Projects\\Neon Sprites\\Tiles\\unitest.png";
         pageName = "Test2";
@@ -168,11 +176,15 @@ newPara2.getOpeningTag() + newPara2.getText() + newPara2.getTag() + "\n" +
         {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_CreateHtmlImageActionPerformed
+    }//GEN-LAST:event_btnCreateHtmlImageActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnChooseFilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseFilePathActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File imageFile = chooser.getSelectedFile();
+        String imageFilePath = imageFile.getAbsolutePath();
+        txtImagePath.setText(imageFilePath);
+    }//GEN-LAST:event_btnChooseFilePathActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,12 +222,14 @@ newPara2.getOpeningTag() + newPara2.getText() + newPara2.getTag() + "\n" +
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CreateHtmlImage;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnChooseFilePath;
+    private javax.swing.JButton btnCreateHtmlImage;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea txbBodyText1;
+    private javax.swing.JTextArea txbBodyText2;
+    private javax.swing.JTextField txtImagePath;
+    private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 
 }
