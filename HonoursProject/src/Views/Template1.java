@@ -9,8 +9,10 @@ package Views;
 import Classes.HTMLImage;
 import Classes.HTMLText;
 import Classes.PageCompiler;
+import Classes.Site;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.HashMap;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -25,12 +27,14 @@ public class Template1 extends javax.swing.JFrame {
     String pageName;
     String filePath;
     
+    private Site thisSite;
     
     /** Creates new form Template1 */
-    public Template1() {
+    public Template1(Site siteIn) {
         
         initComponents();
         
+        thisSite = siteIn;
         
         lblMessage.setText("");
     }
@@ -242,16 +246,31 @@ public class Template1 extends javax.swing.JFrame {
             }*/
             
             PageCompiler pc = new PageCompiler();
+            String newPageHtml = pc.CompileTemplate1NEW(newHeader.getFullHtml(), newImage, newPara.getFullHtml(), newPara2.getFullHtml(), txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText());
+            
+            HashMap<String, String> newPages = new HashMap<>();
+            if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
+            {
+                newPages = thisSite.getPages();
+            }
+            newPages.put(txtPageName.getText(), newPageHtml);
+            thisSite.setPages(newPages);
+            
+            
+            
+            NewWebsite nw = new NewWebsite(thisSite);
+            this.dispose();
+            nw.setVisible(true);
             
             //Compile html into page and return true or false if it is successful or not
-            if(pc.CompileTemplate1(newHeader.getFullHtml(), newImage, newPara.getFullHtml(), newPara2.getFullHtml(), txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText()))
+            /*if(pc.CompileTemplate1(newHeader.getFullHtml(), newImage, newPara.getFullHtml(), newPara2.getFullHtml(), txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText()))
             {
                 lblMessage.setText("Page Succesfully Created");
             }
             else
             {
                 lblMessage.setText("Error Creating Page");
-            }
+            }*/
             
         }
         else //If a required field is not filled out
@@ -301,7 +320,7 @@ public class Template1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Template1().setVisible(true);
+                //new Template1().setVisible(true);
             }
         });
     }

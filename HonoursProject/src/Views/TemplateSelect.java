@@ -5,17 +5,21 @@
  */
 package Views;
 
+import Classes.Site;
+
 /**
  *
  * @author Ross
  */
 public class TemplateSelect extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TemplateSelect
-     */
-    public TemplateSelect() {
+    
+    private Site thisSite;
+    
+    public TemplateSelect(Site siteIn) {
         initComponents();
+        
+        thisSite = siteIn;
     }
 
     /**
@@ -32,6 +36,11 @@ public class TemplateSelect extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTemplate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Template1.png"))); // NOI18N
+        btnTemplate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemplate1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,6 +61,12 @@ public class TemplateSelect extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTemplate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplate1ActionPerformed
+        Template1 t1 = new Template1(thisSite);
+        this.dispose();
+        t1.setVisible(true);
+    }//GEN-LAST:event_btnTemplate1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,7 +98,7 @@ public class TemplateSelect extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TemplateSelect().setVisible(true);
+                //new TemplateSelect().setVisible(true);
             }
         });
     }

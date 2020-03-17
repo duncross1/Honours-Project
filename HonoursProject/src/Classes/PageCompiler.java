@@ -25,7 +25,68 @@ public class PageCompiler {
     private String html;
     
 
-    
+    public String CompileTemplate1NEW(String headerTextHtmlIn, HTMLImage imageIn, String bodyTextHtml1In, String bodyTextHtml2In, String fontSize1In, String fontSize2In, String pageNameIn)
+    {
+        html = "<!DOCTYPE html>\n" +
+                "\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "<style>\n" +
+                "p1 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " + fontSize1In + "px;\n" +
+                "}\n" +
+                "\n" +
+                "p2 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " +  fontSize2In + "px;\n" +
+                "}\n" +
+                "\n" +
+                "header1 {\n" +
+                    "font-weight: bold;\n" +
+                    "font-size: 72px;\n" +
+                "}\n " +
+                "\n" +
+                ".headerContainer {\n" +
+                    "text-align: center;\n" +
+                    "padding-top: 15px;\n" +
+                    "padding-bottom: 15px;\n" +
+                "}\n" +
+                "\n" +
+                ".centeredTextContainer {\n" +
+                    "text-align: center;\n" +
+                "}\n" +
+                "\n" +
+                "img{\n" +
+                    "display: block;\n" +
+                    "margin-left: auto;\n" +
+                    "margin-right: auto;\n" +
+                "}\n" +
+                "</style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "\n" +
+                "<div class=\"headerContainer\">" +
+                headerTextHtmlIn + "\n" +
+                "</div>" +
+                "\n" +
+                "<br>\n" +
+                "<div class=\"centeredTextContainer\">" +
+                bodyTextHtml1In + "\n" +
+                "</div>" +
+                "<br>\n" +
+                "\n" +
+                imageIn.getFullHtml() + "\n" +
+                "<br>\n" +
+                "<div class=\"centeredTextContainer\">" +
+                bodyTextHtml2In + "\n" +
+                "</div>" +
+                "\n" +
+                "</body>\n" +
+                "</html>";
+        
+                return html;
+    }
     
     public boolean CompileTemplate1(String headerTextHtmlIn, HTMLImage imageIn, String bodyTextHtml1In, String bodyTextHtml2In, String fontSize1In, String fontSize2In, String pageNameIn)
     {
@@ -127,7 +188,10 @@ public class PageCompiler {
         }
     }
 
-    
+    public void CreateSite()
+    {
+        
+    }
     
     //Constructor
     public PageCompiler()
