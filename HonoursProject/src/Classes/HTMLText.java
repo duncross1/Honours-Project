@@ -16,6 +16,7 @@ public class HTMLText {
     private String text;
     private String openingTag;
     private String[] parts; //used for generating opening tag
+    private String fullHtml;
     
     //Getters
     public String getTag()
@@ -33,6 +34,11 @@ public class HTMLText {
         return openingTag;
     }
     
+    public String getFullHtml()
+    {
+        return fullHtml;
+    }
+    
     //Setters
     public void setTag(String tagIn)
     {
@@ -43,6 +49,11 @@ public class HTMLText {
     public void setText(String textIn)
     {
         text = textIn;
+    }
+    
+    public void setFullHtml(String fullHtmlIn)
+    {
+        fullHtml = fullHtmlIn; 
     }
     
     
@@ -59,6 +70,7 @@ public class HTMLText {
         tag = TagIn;
         text = TextIn;
         generateOpeningTag(tag);
+        generateFullHtml();
     }
     
     //Generate closing tag
@@ -66,5 +78,11 @@ public class HTMLText {
     {
         parts = tag.split("/");
         openingTag =  parts[0] + parts[1];
+    }
+    
+    //Generate full html
+    public void generateFullHtml()
+    {
+        fullHtml = openingTag + text + tag;
     }
 }
