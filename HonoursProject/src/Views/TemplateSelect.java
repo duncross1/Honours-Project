@@ -63,9 +63,9 @@ public class TemplateSelect extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTemplate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplate1ActionPerformed
-        Template1 t1 = new Template1(thisSite);
+        Template1Editor t1e = new Template1Editor(thisSite);
         this.dispose();
-        t1.setVisible(true);
+        t1e.setVisible(true);
     }//GEN-LAST:event_btnTemplate1ActionPerformed
 
     /**

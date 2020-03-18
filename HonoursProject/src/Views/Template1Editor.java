@@ -10,8 +10,8 @@ import Classes.HTMLImage;
 import Classes.HTMLText;
 import Classes.PageCompiler;
 import Classes.Site;
+import Classes.Templates;
 import java.io.File;
-import java.nio.file.Files;
 import java.util.HashMap;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Ross
  */
-public class Template1 extends javax.swing.JFrame {
+public class Template1Editor extends javax.swing.JFrame {
 
     String imageURL;
     String html;
@@ -30,7 +30,7 @@ public class Template1 extends javax.swing.JFrame {
     private Site thisSite;
     
     /** Creates new form Template1 */
-    public Template1(Site siteIn) {
+    public Template1Editor(Site siteIn) {
         
         initComponents();
         
@@ -231,29 +231,15 @@ public class Template1 extends javax.swing.JFrame {
 
             
             
-            /*Copy image file and set copy path as image path
-            try
-            {
-                File image = new File(txtImagePath.getText());
-                File destination = new File("C:\\Users\\Ross\\Desktop\\HonoursTest\\webpage\\Images\\image1.jpg");
-                Files.deleteIfExists(destination.toPath());
-                Files.copy(image.toPath(), destination.toPath());
-                newImage = new HTMLImage(destination.getAbsolutePath(), "the-image", Integer.parseInt(txtImageWidth.getText()), Integer.parseInt(txtImageHeight.getText()));
-            }
-            catch (Exception ex)
-            {
-                lblMessage.setText("Error copying Image");
-            }*/
+            Templates newPage = new Templates();
+            newPage.fillTemplate1(newHeader, newPara, newPara2, newImage, txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText());
             
-            PageCompiler pc = new PageCompiler();
-            String newPageHtml = pc.CompileTemplate1NEW(newHeader.getFullHtml(), newImage, newPara.getFullHtml(), newPara2.getFullHtml(), txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText());
-            
-            HashMap<String, String> newPages = new HashMap<>();
+            HashMap<String, Templates> newPages = new HashMap<>();
             if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
             {
                 newPages = thisSite.getPages();
             }
-            newPages.put(txtPageName.getText(), newPageHtml);
+            newPages.put(txtPageName.getText(), newPage);
             thisSite.setPages(newPages);
             
             
@@ -307,14 +293,15 @@ public class Template1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Template1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Template1Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Template1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Template1Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Template1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Template1Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Template1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Template1Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

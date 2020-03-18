@@ -5,7 +5,9 @@
  */
 package Views;
 
+import Classes.PageCompiler;
 import Classes.Site;
+import Classes.Templates;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 
@@ -26,7 +28,7 @@ public class NewWebsite extends javax.swing.JFrame {
         DefaultListModel model = new DefaultListModel(); //create a new Default list model object
         if(!thisSite.getPages().isEmpty())
         {          
-            for(Map.Entry<String, String> pagesEntry : thisSite.getPages().entrySet())
+            for(Map.Entry<String, Templates> pagesEntry : thisSite.getPages().entrySet())
             {
                 model.addElement(pagesEntry.getKey());
             }
@@ -57,8 +59,9 @@ public class NewWebsite extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstPages = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCreateSite = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,9 +84,21 @@ public class NewWebsite extends javax.swing.JFrame {
 
         jLabel2.setText("Pages:");
 
-        jButton2.setText("Create Site");
+        btnCreateSite.setText("Create Site");
+        btnCreateSite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateSiteActionPerformed(evt);
+            }
+        });
 
         lblMessage.setText("Message");
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +106,7 @@ public class NewWebsite extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +122,10 @@ public class NewWebsite extends javax.swing.JFrame {
                                 .addGap(190, 190, 190)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jButton1)))
                 .addContainerGap(305, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,10 +138,12 @@ public class NewWebsite extends javax.swing.JFrame {
                     .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblMessage)
@@ -138,6 +158,16 @@ public class NewWebsite extends javax.swing.JFrame {
         this.dispose();
         ts.setVisible(true);
     }//GEN-LAST:event_btnAddPageActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String hhhh = "";
+        hhhh = "t";
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCreateSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSiteActionPerformed
+        PageCompiler pc = new PageCompiler();
+        pc.CompilePages(thisSite);
+    }//GEN-LAST:event_btnCreateSiteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +207,8 @@ public class NewWebsite extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddPage;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCreateSite;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMessage;
