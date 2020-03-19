@@ -17,6 +17,8 @@ public class Templates {
     private HTMLText bodyText2;
     private HTMLImage image;
     
+    private HTMLVideo video1;
+    
     private String fontSize1;
     private String fontSize2;
     private String pageName;
@@ -49,6 +51,11 @@ public class Templates {
     public HTMLImage getImage()
     {
         return image;
+    }
+    
+    public HTMLVideo getVideo1()
+    {
+        return video1;
     }
     
     public String getFontSize1()
@@ -97,6 +104,11 @@ public class Templates {
         image = imageIn;
     }
     
+    public void setVideo1(HTMLVideo video1In)
+    {
+        video1 = video1In;
+    }
+    
     public void setFontSize1(String fontSize1In)
     {
         fontSize1 = fontSize1In;
@@ -125,12 +137,12 @@ public class Templates {
         bodyText1 = new HTMLText();
         bodyText2 = new HTMLText();
         image = new HTMLImage();
+        video1 = new HTMLVideo();
         fontSize1 = "";
         fontSize2 = "";
         pageName = "";
     }
     
-    //Overloaded Constructor
     public void fillTemplate1(HTMLText headerIn, HTMLText bodyText1In, HTMLText bodyText2In, HTMLImage imageIn, String fontSize1In, String fontSize2In, String pageNameIn)
     {
         //TEMPLATE 1 Constructor
@@ -142,7 +154,14 @@ public class Templates {
         fontSize1 = fontSize1In;
         fontSize2 = fontSize2In;
         pageName = pageNameIn;
-        html = CompileTemplate1HTML();
+    }
+    
+    public void fillTemplate2(HTMLText headerIn, HTMLVideo videoIn, String pageNameIn)
+    {
+        template = 2;
+        header = headerIn;
+        video1 = videoIn;
+        pageName = pageNameIn;
     }
     
     
@@ -206,6 +225,38 @@ public class Templates {
                 "</body>\n" +
                 "</html>";
         
+        return html;
+    }
+    
+    public String CompileTemplate2HTML()
+    {
+        html = "<!DOCTYPE html>\n" +
+        "\n" +
+        "<html>\n" +
+        "<head>\n" +
+        "<style>\n" +
+        "header1 {\n" +
+        "font-weight: bold;\n" +
+        "font-size: 72px;\n" +
+        "}\n" +
+        " \n" +
+        ".headerContainer {\n" +
+        "text-align: center;\n" +
+        "padding-top: 15px;\n" +
+        "padding-bottom: 15px;\n" +
+        "}\n" +
+        "</style>\n" +
+        "</head>\n" +
+        "\n" +
+        "<body>\n" +
+        "<div class=\"headerContainer\">\n" +
+        "<header1>" + header.getText() + "</header1>\n" +
+        "</div>\n" +
+        video1.getFullHtml() +
+        "</body>\n" +
+        "</html>";
+                
+                
         return html;
     }
     

@@ -45,10 +45,11 @@ public class PageCompiler {
         switch(pageBeingCreated.getTemplate())
         {
             case 1:
-                copyImage(pageBeingCreated.getImage(), saveFolderPathIn);
+                pageBeingCreated.setImage(copyImage(pageBeingCreated.getImage(), saveFolderPathIn));
+                pageBeingCreated.CompileTemplate1HTML();
             break;
             case 2:
-                // code block
+                pageBeingCreated.CompileTemplate2HTML();
             break;
             default:
             // code block     

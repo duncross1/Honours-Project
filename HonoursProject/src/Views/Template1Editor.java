@@ -21,11 +21,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Ross
  */
 public class Template1Editor extends javax.swing.JFrame {
-
-    String imageURL;
-    String html;
-    String pageName;
-    String filePath;
     
     private Site thisSite;
     
@@ -48,7 +43,7 @@ public class Template1Editor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCreateHtmlImage = new javax.swing.JButton();
+        btnCreateHtmlPage = new javax.swing.JButton();
         btnChooseFilePath = new javax.swing.JButton();
         txtTitle = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -70,13 +65,14 @@ public class Template1Editor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtImageName = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnCreateHtmlImage.setText("Create HTML page");
-        btnCreateHtmlImage.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateHtmlPage.setText("Add Page");
+        btnCreateHtmlPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateHtmlImageActionPerformed(evt);
+                btnCreateHtmlPageActionPerformed(evt);
             }
         });
 
@@ -118,6 +114,13 @@ public class Template1Editor extends javax.swing.JFrame {
 
         jLabel6.setText("Image Name:");
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,7 +144,7 @@ public class Template1Editor extends javax.swing.JFrame {
                                     .addComponent(txtFontSize2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCreateHtmlImage, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCreateHtmlPage, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblMessage))
                             .addGroup(layout.createSequentialGroup()
@@ -163,20 +166,27 @@ public class Template1Editor extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58)
-                                .addComponent(jLabel4))
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnChooseFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(23, 23, 23)
                                 .addComponent(txtImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 78, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -209,7 +219,7 @@ public class Template1Editor extends javax.swing.JFrame {
                     .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateHtmlImage)
+                    .addComponent(btnCreateHtmlPage)
                     .addComponent(lblMessage))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -217,7 +227,7 @@ public class Template1Editor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCreateHtmlImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHtmlImageActionPerformed
+    private void btnCreateHtmlPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHtmlPageActionPerformed
         
         //If none of the required textboxes are empty
         if(!txtTitle.getText().isEmpty() && !txbBodyText1.getText().isEmpty() && !txbBodyText2.getText().isEmpty() 
@@ -263,7 +273,7 @@ public class Template1Editor extends javax.swing.JFrame {
         {
             lblMessage.setText("Please fill out all required fields");
         }
-    }//GEN-LAST:event_btnCreateHtmlImageActionPerformed
+    }//GEN-LAST:event_btnCreateHtmlPageActionPerformed
 
     private void btnChooseFilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseFilePathActionPerformed
         JFileChooser chooser = new JFileChooser();
@@ -275,6 +285,12 @@ public class Template1Editor extends javax.swing.JFrame {
         String imageFilePath = imageFile.getAbsolutePath();
         txtImagePath.setText(imageFilePath);
     }//GEN-LAST:event_btnChooseFilePathActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        NewWebsite nw = new NewWebsite(thisSite);
+        this.dispose();
+        nw.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,8 +329,9 @@ public class Template1Editor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnChooseFilePath;
-    private javax.swing.JButton btnCreateHtmlImage;
+    private javax.swing.JButton btnCreateHtmlPage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
