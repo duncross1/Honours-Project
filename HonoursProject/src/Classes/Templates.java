@@ -202,9 +202,15 @@ public class Templates {
                     "margin-left: auto;\n" +
                     "margin-right: auto;\n" +
                 "}\n" +
+                
+                "£NavBarCSS£ \n" + 
+                
                 "</style>\n" +
                 "</head>\n" +
                 "<body>\n" +
+                
+                "£NavBarHTML£ \n" +
+                
                 "\n" +
                 "<div class=\"headerContainer\">" +
                 header.getFullHtml() + "\n" +
@@ -245,10 +251,16 @@ public class Templates {
         "padding-top: 15px;\n" +
         "padding-bottom: 15px;\n" +
         "}\n" +
+                
+        "£NavBarCSS£ \n" + 
+                
         "</style>\n" +
         "</head>\n" +
         "\n" +
         "<body>\n" +
+                
+        "£NavBarHTML£ \n" +
+                
         "<div class=\"headerContainer\">\n" +
         "<header1>" + header.getText() + "</header1>\n" +
         "</div>\n" +

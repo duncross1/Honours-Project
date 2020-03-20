@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFileChooser;
 
@@ -15,13 +16,6 @@ import javax.swing.JFileChooser;
 public class PageCompiler {
     
     //Attributes
-   // private String headerTextHtml;
-  //  private String imageHtml1;
-   // private String bodyTextHtml1;
-   // private String bodyTextHtml2;
-   // private String fontSize1;
-    //private String fontSize2;
-    //private String FooterHtml;
     private String html;
     
     
@@ -31,14 +25,36 @@ public class PageCompiler {
         //Creates folders which returns a file path which is assigned as the save folder
         String saveFolderPath = CreateFolders(creatingSite);
         
-        for(Map.Entry<String, Templates> pagesEntry : siteIn.getPages().entrySet())
+        NavigationBar nb = CreateNavigationBar(creatingSite);
+        
+        for(Map.Entry<String, Templates> pagesEntry : creatingSite.getPages().entrySet())
         {
             Templates page = pagesEntry.getValue();
-            CreatePage(page, saveFolderPath);
+            CreatePage(page, saveFolderPath, nb);
         }
     }
     
-    public void CreatePage(Templates pageIn, String saveFolderPathIn)
+    public NavigationBar CreateNavigationBar(Site siteIn)
+    {
+        NavigationBar nb = new NavigationBar();
+        
+        HashMap<String, String> links = new HashMap<>();
+        
+        for(Map.Entry<String, Templates> pagesEntry : siteIn.getPages().entrySet())
+        {
+            String pageName = pagesEntry.getKey();
+            links.put(pageName, "<li><a href=\"" + pageName + ".html\">" + pageName + "</a></li>");
+        }
+        
+        nb.setLinks(links);
+        nb.GenerateHtml();
+        nb.GenerateCss();
+        
+        return nb;
+                    
+    }
+    
+    public void CreatePage(Templates pageIn, String saveFolderPathIn, NavigationBar nbIn)
     {
         Templates pageBeingCreated = pageIn;
         
@@ -54,6 +70,10 @@ public class PageCompiler {
             default:
             // code block     
         }
+        
+        //Add the NavigationBar to the page before it is exported
+        pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarHTML£", nbIn.getHTML()));
+        pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarCSS£", nbIn.getCSS()));
         
         try
         {
@@ -284,34 +304,11 @@ public class PageCompiler {
             return false;
         }
     }
-
-    public void CreateSite()
-    {
-        
-    }
     
     //Constructor
     public PageCompiler()
     {
-      //  headerTextHtml = "";
-      //  imageHtml1 = "";
-       // bodyTextHtml1 = "";
-      //  bodyTextHtml2 = "";
-       // fontSize1 = "";
-        //fontSize2 = "";
-        //FooterHtml = "";
         html = "";
     }
-    
-    /*Template1 Constructor
-    public PageCompiler(String headerTextHtmlIn, String imageHtmlIn, String bodyTextHtml1In, String bodyTextHtml2In, String fontSize1In, String fontSize2In)
-    {
-        headerTextHtml = headerTextHtmlIn;
-        imageHtml1 = imageHtmlIn;
-        bodyTextHtml1 = bodyTextHtml1In;
-        bodyTextHtml2 = bodyTextHtml2In;
-        fontSize1 = fontSize1In;
-        fontSize2 = fontSize2In;
-    }*/
     
 }
