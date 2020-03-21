@@ -15,7 +15,8 @@ public class Templates {
     private HTMLText header;
     private HTMLText bodyText1;
     private HTMLText bodyText2;
-    private HTMLImage image;
+    private HTMLImage image1;
+    private HTMLImage image2;
     
     private HTMLVideo video1;
     
@@ -48,9 +49,14 @@ public class Templates {
         return bodyText2;
     }
     
-    public HTMLImage getImage()
+    public HTMLImage getImage1()
     {
-        return image;
+        return image1;
+    }
+    
+    public HTMLImage getImage2()
+    {
+        return image2;
     }
     
     public HTMLVideo getVideo1()
@@ -99,9 +105,14 @@ public class Templates {
         bodyText2 = bodyText2In;
     }
     
-    public void setImage(HTMLImage imageIn)
+    public void setImage1(HTMLImage image1In)
     {
-        image = imageIn;
+        image1 = image1In;
+    }
+    
+    public void setImage2(HTMLImage image2In)
+    {
+        image2 = image2In;
     }
     
     public void setVideo1(HTMLVideo video1In)
@@ -136,21 +147,22 @@ public class Templates {
         header = new HTMLText();
         bodyText1 = new HTMLText();
         bodyText2 = new HTMLText();
-        image = new HTMLImage();
+        image1 = new HTMLImage();
+        image2 = new HTMLImage();
         video1 = new HTMLVideo();
         fontSize1 = "";
         fontSize2 = "";
         pageName = "";
     }
     
-    public void fillTemplate1(HTMLText headerIn, HTMLText bodyText1In, HTMLText bodyText2In, HTMLImage imageIn, String fontSize1In, String fontSize2In, String pageNameIn)
+    public void fillTemplate1(HTMLText headerIn, HTMLText bodyText1In, HTMLText bodyText2In, HTMLImage image1In, String fontSize1In, String fontSize2In, String pageNameIn)
     {
-        //TEMPLATE 1 Constructor
+        //TEMPLATE 1
         template = 1;
         header = headerIn;
         bodyText1 = bodyText1In;
         bodyText2 = bodyText2In;
-        image = imageIn;
+        image1 = image1In;
         fontSize1 = fontSize1In;
         fontSize2 = fontSize2In;
         pageName = pageNameIn;
@@ -158,9 +170,24 @@ public class Templates {
     
     public void fillTemplate2(HTMLText headerIn, HTMLVideo videoIn, String pageNameIn)
     {
+        //TEMPLATE 2
         template = 2;
         header = headerIn;
         video1 = videoIn;
+        pageName = pageNameIn;
+    }
+    
+    public void fillTemplate3(HTMLText headerIn, HTMLText bodyText1In, HTMLText bodyText2In, HTMLImage image1In, HTMLImage image2In, String fontSize1In, String fontSize2In, String pageNameIn)
+    {
+        //TEMPLATE 3
+        template = 3;
+        header = headerIn;
+        bodyText1 = bodyText1In;
+        bodyText2 = bodyText2In;
+        image1 = image1In;
+        image2 = image2In;
+        fontSize1 = fontSize1In;
+        fontSize2 = fontSize2In;
         pageName = pageNameIn;
     }
     
@@ -222,7 +249,7 @@ public class Templates {
                 "</div>" +
                 "<br>\n" +
                 "\n" +
-                image.getFullHtml() + "\n" +
+                image1.getFullHtml() + "\n" +
                 "<br>\n" +
                 "<div class=\"centeredTextContainer\">" +
                 bodyText2.getFullHtml() + "\n" +
@@ -269,6 +296,70 @@ public class Templates {
         "</html>";
                 
                 
+        return html;
+    }
+    
+    public String CompileTemplate3HTML()
+    {
+        html = "<!DOCTYPE html>\n" +
+                "\n" +
+                "<head>\n" +
+                "<style>\n" +
+                "p1 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " + fontSize1 + "px;\n" +
+                "}\n" +
+                "\n" +
+                "p2 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " +  fontSize2 + "px;\n" +
+                "}\n" +
+                "\n" +
+                "img.SideImg{\n" +
+                "  margin-left: 30px;\n" +
+                "  margin-right: 30px;\n" +
+                "  \n" +
+                "}\n" +
+                "\n" +
+                "header1 {\n" +
+                "font-weight: bold;\n" +
+                "font-size: 72px;\n" +
+                "}\n" +
+                " \n" +
+                ".headerContainer {\n" +
+                "text-align: center;\n" +
+                "padding-top: 15px;\n" +
+                "padding-bottom: 15px;\n" +
+                "}\n" +
+                "\n" +
+                
+                "£NavBarCSS£ \n" + 
+                
+                "</style>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                
+                "£NavBarHTML£ \n" +
+                
+                "\n" +
+                "<div class=\"headerContainer\">\n" +
+                "<header1>" + header.getText() + "</header1>\n" +
+                "</div>\n" +
+                "\n" +
+                "<div>\n" +
+                "<img class=\"SideImg\" src=\"" + image1.getImageURL() + "\"alt=\"Trulli\" width=\"500\" height=\"333\" align=\"right\">\n" +
+                bodyText1.getFullHtml() + "\n" +
+                "</div>\n" +
+                "<br>\n" +
+                "<div>\n" +
+                "<img class=\"SideImg\" src=\"" + image2.getImageURL() + "\"alt=\"Trulli\" + width=\"500\" height=\"333\" align=\"left\">\n" +
+                bodyText2.getFullHtml() + "\n" +
+                "</div>\n" +
+                "<br>\n" +
+                "<br>\n" +
+                "</body>";
+        
         return html;
     }
     

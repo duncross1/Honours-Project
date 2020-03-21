@@ -47,9 +47,9 @@ public class Template1Editor extends javax.swing.JFrame {
         btnChooseFilePath = new javax.swing.JButton();
         txtTitle = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txbBodyText1 = new javax.swing.JTextArea();
+        txtBodyText1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txbBodyText2 = new javax.swing.JTextArea();
+        txtBodyText2 = new javax.swing.JTextArea();
         txtImagePath = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -85,15 +85,19 @@ public class Template1Editor extends javax.swing.JFrame {
 
         txtTitle.setText("Insert Title");
 
-        txbBodyText1.setColumns(20);
-        txbBodyText1.setRows(10);
-        txbBodyText1.setText("Insert Body Text");
-        jScrollPane1.setViewportView(txbBodyText1);
+        txtBodyText1.setColumns(20);
+        txtBodyText1.setLineWrap(true);
+        txtBodyText1.setRows(10);
+        txtBodyText1.setText("Insert Body Text");
+        txtBodyText1.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtBodyText1);
 
-        txbBodyText2.setColumns(20);
-        txbBodyText2.setRows(5);
-        txbBodyText2.setText("Inser Body Text 2");
-        jScrollPane2.setViewportView(txbBodyText2);
+        txtBodyText2.setColumns(20);
+        txtBodyText2.setLineWrap(true);
+        txtBodyText2.setRows(5);
+        txtBodyText2.setText("Inser Body Text 2");
+        txtBodyText2.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(txtBodyText2);
 
         txtImagePath.setEditable(false);
 
@@ -230,14 +234,15 @@ public class Template1Editor extends javax.swing.JFrame {
     private void btnCreateHtmlPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHtmlPageActionPerformed
         
         //If none of the required textboxes are empty
-        if(!txtTitle.getText().isEmpty() && !txbBodyText1.getText().isEmpty() && !txbBodyText2.getText().isEmpty() 
+        if(!txtTitle.getText().isEmpty() && !txtBodyText1.getText().isEmpty() && !txtBodyText2.getText().isEmpty() 
         && !txtImagePath.getText().isEmpty() && !txtImageWidth.getText().isEmpty() && !txtImageHeight.getText().isEmpty()
-        && !txtFontSize1.getText().isEmpty() && !txtFontSize2.getText().isEmpty())
+        && !txtFontSize1.getText().isEmpty() && !txtFontSize2.getText().isEmpty() && !txtImageName.getText().isEmpty()
+        && !txtPageName.getText().isEmpty())
         {
             HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
-            HTMLText newPara = new HTMLText("</p1>", txbBodyText1.getText());
+            HTMLText newPara = new HTMLText("</p1>", txtBodyText1.getText());
             HTMLImage newImage = new HTMLImage(txtImagePath.getText(), "the-image", Integer.parseInt(txtImageWidth.getText()), Integer.parseInt(txtImageHeight.getText()), txtImageName.getText());
-            HTMLText newPara2 = new HTMLText("</p2>", txbBodyText2.getText());
+            HTMLText newPara2 = new HTMLText("</p2>", txtBodyText2.getText());
 
             
             
@@ -258,15 +263,6 @@ public class Template1Editor extends javax.swing.JFrame {
             this.dispose();
             nw.setVisible(true);
             
-            //Compile html into page and return true or false if it is successful or not
-            /*if(pc.CompileTemplate1(newHeader.getFullHtml(), newImage, newPara.getFullHtml(), newPara2.getFullHtml(), txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText()))
-            {
-                lblMessage.setText("Page Succesfully Created");
-            }
-            else
-            {
-                lblMessage.setText("Error Creating Page");
-            }*/
             
         }
         else //If a required field is not filled out
@@ -342,8 +338,8 @@ public class Template1Editor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblImageWidth;
     private javax.swing.JLabel lblMessage;
-    private javax.swing.JTextArea txbBodyText1;
-    private javax.swing.JTextArea txbBodyText2;
+    private javax.swing.JTextArea txtBodyText1;
+    private javax.swing.JTextArea txtBodyText2;
     private javax.swing.JTextField txtFontSize1;
     private javax.swing.JTextField txtFontSize2;
     private javax.swing.JTextField txtImageHeight;

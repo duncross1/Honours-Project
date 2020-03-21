@@ -33,6 +33,7 @@ public class TemplateSelect extends javax.swing.JFrame {
 
         btnTemplate1 = new javax.swing.JButton();
         btnTemplate2 = new javax.swing.JButton();
+        btnTemplate3 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,13 @@ public class TemplateSelect extends javax.swing.JFrame {
             }
         });
 
+        btnTemplate3.setText("Template 3");
+        btnTemplate3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemplate3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,7 +67,9 @@ public class TemplateSelect extends javax.swing.JFrame {
                 .addComponent(btnTemplate1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(btnTemplate2)
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(btnTemplate3)
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +79,9 @@ public class TemplateSelect extends javax.swing.JFrame {
                     .addComponent(btnTemplate1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(btnTemplate2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTemplate2)
+                            .addComponent(btnTemplate3))))
                 .addContainerGap(297, Short.MAX_VALUE))
         );
 
@@ -87,6 +99,12 @@ public class TemplateSelect extends javax.swing.JFrame {
         this.dispose();
         t2e.setVisible(true);
     }//GEN-LAST:event_btnTemplate2ActionPerformed
+
+    private void btnTemplate3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplate3ActionPerformed
+        Template3Editor t3e = new Template3Editor(thisSite);
+        this.dispose();
+        t3e.setVisible(true);
+    }//GEN-LAST:event_btnTemplate3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,5 +144,6 @@ public class TemplateSelect extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTemplate1;
     private javax.swing.JButton btnTemplate2;
+    private javax.swing.JToggleButton btnTemplate3;
     // End of variables declaration//GEN-END:variables
 }
