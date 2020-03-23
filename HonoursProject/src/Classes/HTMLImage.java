@@ -14,8 +14,8 @@ public class HTMLImage {
     //Attributes
     private String URL;
     private String alt;
-    private int width;
-    private int height;
+    private String width;
+    private String height;
     private String name;
     private String fullHtml;
     
@@ -30,12 +30,12 @@ public class HTMLImage {
         return alt;   
     }
     
-    public int getWidth()
+    public String getWidth()
     {
         return width;   
     }
     
-    public int getHeight()
+    public String getHeight()
     {
         return height;   
     }
@@ -61,12 +61,12 @@ public class HTMLImage {
         alt = altIn;
     }
     
-    public void setWidth(int widthIn)
+    public void setWidth(String widthIn)
     {
         width = widthIn;
     }
     
-    public void setHeight(int heightIn)
+    public void setHeight(String heightIn)
     {
         height = heightIn;
     }
@@ -86,13 +86,13 @@ public class HTMLImage {
     {
         URL = "";
         alt = "";
-        width = 0;
-        height = 0;
+        width = "";
+        height = "";
         name = "";
     }
     
     //Overloaded Constructor
-    public HTMLImage(String URLIn, String altIn, int widthIn, int heightIn, String nameIn)
+    public HTMLImage(String URLIn, String altIn, String widthIn, String heightIn, String nameIn)
     {
         URL = URLIn;
         alt = altIn;
@@ -104,7 +104,7 @@ public class HTMLImage {
     
     public void generateFullHtml()
     {
-        fullHtml = "<img src=\"" + URL + "\"alt=\"" + alt + "\" width=\"" + String.valueOf(width) + "\" height=\"" + String.valueOf(height) + "\">";
+        fullHtml = "<img src=\"" + URL + "\"alt=\"" + alt + "\" width=\"" + width + "\" height=\"" + height + "\">";
     }
     
 }

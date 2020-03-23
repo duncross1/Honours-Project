@@ -241,7 +241,7 @@ public class Template1Editor extends javax.swing.JFrame {
         {
             HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
             HTMLText newPara = new HTMLText("</p1>", txtBodyText1.getText());
-            HTMLImage newImage = new HTMLImage(txtImagePath.getText(), "the-image", Integer.parseInt(txtImageWidth.getText()), Integer.parseInt(txtImageHeight.getText()), txtImageName.getText());
+            HTMLImage newImage = new HTMLImage(txtImagePath.getText(), "the-image", txtImageWidth.getText(), txtImageHeight.getText(), txtImageName.getText());
             HTMLText newPara2 = new HTMLText("</p2>", txtBodyText2.getText());
 
             

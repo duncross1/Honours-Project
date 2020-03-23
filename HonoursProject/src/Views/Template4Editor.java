@@ -182,6 +182,7 @@ public class Template4Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPageActionPerformed
+        //If none of the required textboxes are empty
         if(!txtTitle.getText().isEmpty() && !txtBodyText1.getText().isEmpty() && !txtButtonLink.getText().isEmpty() 
         && !txtButtonText.getText().isEmpty() && !txtFontSize1.getText().isEmpty() && !txtFontSize1.getText().isEmpty()
         && !txtPageName.getText().isEmpty())
@@ -204,6 +205,10 @@ public class Template4Editor extends javax.swing.JFrame {
             NewWebsite nw = new NewWebsite(thisSite);
             this.dispose();
             nw.setVisible(true);
+        }
+        else //If a required field is not filled out
+        {
+            lblMessage.setText("Please fill out all required fields");
         }
     }//GEN-LAST:event_btnAddPageActionPerformed
 

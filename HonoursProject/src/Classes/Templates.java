@@ -21,6 +21,7 @@ public class Templates {
     private HTMLVideo video1;
     
     private HTMLLinkButton lb1;
+    private HTMLLinkButton lb2;
     
     private String fontSize1;
     private String fontSize2;
@@ -69,6 +70,11 @@ public class Templates {
     public HTMLLinkButton getLb1()
     {
         return lb1;
+    }
+    
+    public HTMLLinkButton getLb2()
+    {
+        return lb2;
     }
     
     public String getFontSize1()
@@ -130,6 +136,11 @@ public class Templates {
     public void setLb1(HTMLLinkButton lb1In)
     {
         lb1 = lb1In;
+    }
+    
+    public void setLb2(HTMLLinkButton lb2In)
+    {
+        lb1 = lb2In;
     }
     
     public void setFontSize1(String fontSize1In)
@@ -215,6 +226,23 @@ public class Templates {
         pageName = pageNameIn;
     }
     
+    public void fillTemplate5(HTMLText headerIn, HTMLImage image1In, HTMLText bodyText1In, String fontSize1In, HTMLLinkButton lb1In,
+            HTMLImage image2In, HTMLText bodyText2In, String fontSize2In, HTMLLinkButton lb2In, String pageNameIn)
+    {
+        //TEMPLATE 5
+        template = 5;
+        header = headerIn;
+        image1 = image1In;
+        bodyText1 = bodyText1In;
+        fontSize1 = fontSize1In;
+        lb1 = lb1In;
+        image2 = image2In;
+        bodyText2 = bodyText2In;
+        fontSize2 = fontSize2In;
+        lb2 = lb2In;
+        pageName = pageNameIn;
+    }
+    
     public String CompileTemplate1HTML()
     {
         html = "<!DOCTYPE html>\n" +
@@ -222,7 +250,7 @@ public class Templates {
                 "<html>\n" +
                 "<head>\n" +
                 
-                "<title>" + pageName + "</title>" +
+                "<title>" + pageName + "</title> \n" +
                 
                 "<style>\n" +
                 "p1 {\n" +
@@ -294,7 +322,7 @@ public class Templates {
         "<html>\n" +
         "<head>\n" +
                 
-        "<title>" + pageName + "</title>" +
+        "<title>" + pageName + "</title> \n" +
                 
         "<style>\n" +
         "header1 {\n" +
@@ -334,7 +362,7 @@ public class Templates {
                 "\n" +
                 "<head>\n" +
                 
-                "<title>" + pageName + "</title>" +
+                "<title>" + pageName + "</title> \n" +
                 
                 "<style>\n" +
                 "p1 {\n" +
@@ -402,7 +430,7 @@ public class Templates {
                 "\n" +
                 "<head>\n" +
                 
-                "<title>" + pageName + "</title>" +
+                "<title>" + pageName + "</title> \n" +
                 
                 "<style>\n" +
                 "p1 {\n" +
@@ -423,10 +451,16 @@ public class Templates {
                 "\n" +
                 lb1.getCSS() + "\n" +
                 "\n" +
+                
+                "£NavBarCSS£ \n" + 
+                
                 "</style>\n" +
                 "</head>\n" +
                 "\n" +
                 "<body>\n" +
+                
+                "£NavBarHTML£ \n" +
+                
                 "\n" +
                 "<div class=\"headerContainer\">\n" +
                 "<header1>Heading</header1>\n" +
@@ -439,6 +473,93 @@ public class Templates {
                 "<div class=\"headerContainer\">\n" +
                 lb1.getHTML() + "\n" +
                 "</div>\n" +
+                "<br>\n" +
+                "<br>\n" +
+                "</body>";
+        
+        return html;
+    }
+    
+    public String CompileTemplate5HTML()
+    {
+        html = "<!DOCTYPE html>\n" +
+                "\n" +
+                "<head>\n" +
+                
+                "<title>" + pageName + "</title> \n" +
+                
+                "<style>\n" +
+                
+                "p1 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " + fontSize1 + "px;\n" +
+                "}\n" +
+                "\n" +
+                "p2 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " +  fontSize2 + "px;\n" +
+                "}\n" +
+                "\n" +
+                "header1 {\n" +
+                "font-weight: bold;\n" +
+                "font-size: 72px;\n" +
+                "}\n" +
+                " \n" +
+                ".headerContainer {\n" +
+                "text-align: center;\n" +
+                "padding-top: 15px;\n" +
+                "padding-bottom: 15px;\n" +
+                "}\n" +
+                "\n" +
+                "* {\n" +
+                "  box-sizing: border-box;\n" +
+                "}\n" +
+                "\n" +
+                ".column {\n" +
+                "  float: left;\n" +
+                "  width: 50%;\n" +
+                "  padding: 5px;\n" +
+                "}\n" +
+                "\n" +
+                ".row::after {\n" +
+                "  content: \"\";\n" +
+                "  clear: both;\n" +
+                "  display: table;\n" +
+                "}\n" +
+                "\n" +
+                lb1.getCSS() + "\n" +
+                "\n" +
+                
+                "£NavBarCSS£ \n" + 
+                
+                "</style>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                
+                "£NavBarHTML£ \n" +
+                
+                "\n" +
+                "<div class=\"headerContainer\">\n" +
+                "<header1>Heading</header1>\n" +
+                "</div>\n" +
+                "\n" +
+                "<div class=\"row\">\n" +
+                "  <div class=\"column\">\n" +
+                "    " + image1.getFullHtml() + "\n" +
+                "	<div class=\"headerContainer\">\n" +
+                "	" + bodyText1.getFullHtml() + "\n" +    
+                "        " + lb1.getHTML() + "\n" +
+                "    </div>\n" +
+                "  </div>\n" +
+                "  <div class=\"column\">\n" +
+                "    " + image2.getFullHtml() + "\n" +
+                "	<div class=\"headerContainer\">\n" +
+                "	" + bodyText2.getFullHtml() + "\n" +
+                "        " + lb2.getHTML() + "\n" +
+                "    </div>\n" +
+                "  </div>\n" +
+                "  \n" +
                 "<br>\n" +
                 "<br>\n" +
                 "</body>";

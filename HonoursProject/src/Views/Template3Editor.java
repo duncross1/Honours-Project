@@ -303,8 +303,8 @@ public class Template3Editor extends javax.swing.JFrame {
         {
             HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
             HTMLText newPara = new HTMLText("</p1>", txtBodyText1.getText());
-            HTMLImage newImage = new HTMLImage(txtImage1Path.getText(), "the-image1", Integer.parseInt(txtImage1Width.getText()), Integer.parseInt(txtImage1Height.getText()), txtImage1Name.getText());
-            HTMLImage newImage2 = new HTMLImage(txtImage2Path.getText(), "the-image2", Integer.parseInt(txtImage2Width.getText()), Integer.parseInt(txtImage2Height.getText()), txtImage2Name.getText());
+            HTMLImage newImage = new HTMLImage(txtImage1Path.getText(), "the-image1", txtImage1Width.getText(), txtImage1Height.getText(), txtImage1Name.getText());
+            HTMLImage newImage2 = new HTMLImage(txtImage2Path.getText(), "the-image2", txtImage2Width.getText(), txtImage2Height.getText(), txtImage2Name.getText());
             HTMLText newPara2 = new HTMLText("</p2>", txtBodyText2.getText());
             
             
