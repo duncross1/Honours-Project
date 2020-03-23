@@ -20,6 +20,8 @@ public class Templates {
     
     private HTMLVideo video1;
     
+    private HTMLLinkButton lb1;
+    
     private String fontSize1;
     private String fontSize2;
     private String pageName;
@@ -62,6 +64,11 @@ public class Templates {
     public HTMLVideo getVideo1()
     {
         return video1;
+    }
+    
+    public HTMLLinkButton getLb1()
+    {
+        return lb1;
     }
     
     public String getFontSize1()
@@ -120,6 +127,11 @@ public class Templates {
         video1 = video1In;
     }
     
+    public void setLb1(HTMLLinkButton lb1In)
+    {
+        lb1 = lb1In;
+    }
+    
     public void setFontSize1(String fontSize1In)
     {
         fontSize1 = fontSize1In;
@@ -150,6 +162,7 @@ public class Templates {
         image1 = new HTMLImage();
         image2 = new HTMLImage();
         video1 = new HTMLVideo();
+        lb1 = new HTMLLinkButton();
         fontSize1 = "";
         fontSize2 = "";
         pageName = "";
@@ -191,6 +204,16 @@ public class Templates {
         pageName = pageNameIn;
     }
     
+    public void fillTemplate4(HTMLText headerIn, HTMLText bodyText1In, String fontSize1In, HTMLLinkButton lb1In, String pageNameIn)
+    {
+        //TEMPLATE 4
+        template = 4;
+        header = headerIn;
+        bodyText1 = bodyText1In;
+        fontSize1 = fontSize1In;
+        lb1 = lb1In;
+        pageName = pageNameIn;
+    }
     
     public String CompileTemplate1HTML()
     {
@@ -198,6 +221,9 @@ public class Templates {
                 "\n" +
                 "<html>\n" +
                 "<head>\n" +
+                
+                "<title>" + pageName + "</title>" +
+                
                 "<style>\n" +
                 "p1 {\n" +
                     "font-family: verdana;\n" +
@@ -267,6 +293,9 @@ public class Templates {
         "\n" +
         "<html>\n" +
         "<head>\n" +
+                
+        "<title>" + pageName + "</title>" +
+                
         "<style>\n" +
         "header1 {\n" +
         "font-weight: bold;\n" +
@@ -304,6 +333,9 @@ public class Templates {
         html = "<!DOCTYPE html>\n" +
                 "\n" +
                 "<head>\n" +
+                
+                "<title>" + pageName + "</title>" +
+                
                 "<style>\n" +
                 "p1 {\n" +
                     "font-family: verdana;\n" +
@@ -355,6 +387,57 @@ public class Templates {
                 "<div>\n" +
                 "<img class=\"SideImg\" src=\"" + image2.getImageURL() + "\"alt=\"Trulli\" + width=\"500\" height=\"333\" align=\"left\">\n" +
                 bodyText2.getFullHtml() + "\n" +
+                "</div>\n" +
+                "<br>\n" +
+                "<br>\n" +
+                "</body>";
+        
+        return html;
+    }
+    
+    
+    public String CompileTemplate4HTML()
+    {
+        html = "<!DOCTYPE html>\n" +
+                "\n" +
+                "<head>\n" +
+                
+                "<title>" + pageName + "</title>" +
+                
+                "<style>\n" +
+                "p1 {\n" +
+                    "font-family: verdana;\n" +
+                    "font-size: " + fontSize1 + "px;\n" +
+                "}\n" +
+                "\n" +
+                "header1 {\n" +
+                "font-weight: bold;\n" +
+                "font-size: 72px;\n" +
+                "}\n" +
+                " \n" +
+                ".headerContainer {\n" +
+                "text-align: center;\n" +
+                "padding-top: 15px;\n" +
+                "padding-bottom: 15px;\n" +
+                "}\n" +
+                "\n" +
+                lb1.getCSS() + "\n" +
+                "\n" +
+                "</style>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "\n" +
+                "<div class=\"headerContainer\">\n" +
+                "<header1>Heading</header1>\n" +
+                "</div>\n" +
+                "\n" +
+                "<div class=\"headerContainer\"> \n" +
+                bodyText1.getFullHtml() + "\n" +
+                "</div>\n" +
+                "<br>\n" +
+                "<div class=\"headerContainer\">\n" +
+                lb1.getHTML() + "\n" +
                 "</div>\n" +
                 "<br>\n" +
                 "<br>\n" +

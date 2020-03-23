@@ -72,6 +72,9 @@ public class PageCompiler {
                 pageBeingCreated.setImage2(copyImage(pageBeingCreated.getImage2(), saveFolderPathIn));
                 pageBeingCreated.CompileTemplate3HTML();
             break;
+            case 4:
+                pageBeingCreated.CompileTemplate4HTML();
+            break;
             default:
             // code block     
         }

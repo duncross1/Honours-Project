@@ -31,11 +31,10 @@
                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                       <Component id="BtnBack" min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="lblPageName" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -55,9 +54,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtVideoHeight" min="-2" pref="52" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtTitle" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
                           <Component id="txtPageName" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
                           <Component id="lblMessage" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTitle" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
                   </Group>
@@ -74,12 +73,9 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="BtnBack" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="txtTitle" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtVideoLink" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,10 +112,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTitle">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Header:"/>
+        <Property name="text" type="java.lang.String" value="Insert Title"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
