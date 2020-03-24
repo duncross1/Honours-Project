@@ -1,2 +1,2 @@
 # Honours-Project
-Project for my Computing honours degree - A html/javascript page generator
+Project for my Computing honours degree - A html/CSS site generator
