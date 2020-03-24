@@ -5,11 +5,12 @@
  */
 package Classes;
 
-/**
- *
- * @author Ross
+/** HTML Link Button Class
+ * @author Ross Duncan
  */
 public class HTMLLinkButton {
+    
+    //Attributes
     private String URL;
     private String text;
     private String HTML;
@@ -68,6 +69,7 @@ public class HTMLLinkButton {
         CSS = "";
     }
     
+    //OverloadedConstructor
     public HTMLLinkButton(String URLIn, String textIn)
     {
         URL = URLIn;
@@ -77,11 +79,13 @@ public class HTMLLinkButton {
         GenerateCSS();
     }
     
+    //Generate the html string for the link button
     public void GenerateHtml()
     {
         HTML = "<button class=\"LinkButton\" onclick=\"window.location.href = \'" + URL + "\'; \">" + text + "</button>";
     }
     
+    //Generate the CSS string for the link button
     public void GenerateCSS()
     {
         CSS= ".LinkButton {\n" +

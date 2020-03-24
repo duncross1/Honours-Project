@@ -5,9 +5,8 @@
  */
 package Classes;
 
-/**
- *
- * @author Ross
+/** HTML Image Class
+ * @author Ross Duncan
  */
 public class HTMLImage {
     
@@ -102,6 +101,7 @@ public class HTMLImage {
         generateFullHtml();
     }
     
+    //Generate the html string for the image
     public void generateFullHtml()
     {
         fullHtml = "<img src=\"" + URL + "\"alt=\"" + alt + "\" width=\"" + width + "\" height=\"" + height + "\">";

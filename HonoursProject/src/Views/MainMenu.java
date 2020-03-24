@@ -5,9 +5,8 @@
  */
 package Views;
 
-/**
- *
- * @author Ross
+/** Main Menu Form
+ * @author Ross Duncan
  */
 public class MainMenu extends javax.swing.JFrame {
 
@@ -109,9 +108,7 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewExistingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewExistingActionPerformed
-        ExistingPages ep = new ExistingPages();
-        this.dispose();
-        ep.setVisible(true);
+
     }//GEN-LAST:event_btnViewExistingActionPerformed
 
     private void btnCreateNewSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNewSiteActionPerformed

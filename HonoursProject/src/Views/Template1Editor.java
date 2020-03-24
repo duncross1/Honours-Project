@@ -16,9 +16,8 @@ import java.util.HashMap;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Ross
+/** Template 1 Editor Form
+ * @author Ross Duncan
  */
 public class Template1Editor extends javax.swing.JFrame {
     
@@ -239,30 +238,41 @@ public class Template1Editor extends javax.swing.JFrame {
         && !txtFontSize1.getText().isEmpty() && !txtFontSize2.getText().isEmpty() && !txtImageName.getText().isEmpty()
         && !txtPageName.getText().isEmpty())
         {
-            HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
-            HTMLText newPara = new HTMLText("</p1>", txtBodyText1.getText());
-            HTMLImage newImage = new HTMLImage(txtImagePath.getText(), "the-image", txtImageWidth.getText(), txtImageHeight.getText(), txtImageName.getText());
-            HTMLText newPara2 = new HTMLText("</p2>", txtBodyText2.getText());
-
-            
-            
-            Templates newPage = new Templates();
-            newPage.fillTemplate1(newHeader, newPara, newPara2, newImage, txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText());
-            
-            HashMap<String, Templates> newPages = new HashMap<>();
-            if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
+            try
             {
-                newPages = thisSite.getPages();
+                int numTest = Integer.parseInt(txtFontSize1.getText());
+                numTest = Integer.parseInt(txtFontSize2.getText());
+                numTest = Integer.parseInt(txtImageWidth.getText());
+                numTest = Integer.parseInt(txtImageHeight.getText());
+                
+                HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
+                HTMLText newPara = new HTMLText("</p1>", txtBodyText1.getText());
+                HTMLImage newImage = new HTMLImage(txtImagePath.getText(), "the-image", txtImageWidth.getText(), txtImageHeight.getText(), txtImageName.getText());
+                HTMLText newPara2 = new HTMLText("</p2>", txtBodyText2.getText());
+
+
+
+                Templates newPage = new Templates();
+                newPage.fillTemplate1(newHeader, newPara, newPara2, newImage, txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText());
+
+                HashMap<String, Templates> newPages = new HashMap<>();
+                if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
+                {
+                    newPages = thisSite.getPages();
+                }
+                newPages.put(txtPageName.getText(), newPage);
+                thisSite.setPages(newPages);
+
+
+
+                NewWebsite nw = new NewWebsite(thisSite);
+                this.dispose();
+                nw.setVisible(true);
             }
-            newPages.put(txtPageName.getText(), newPage);
-            thisSite.setPages(newPages);
-            
-            
-            
-            NewWebsite nw = new NewWebsite(thisSite);
-            this.dispose();
-            nw.setVisible(true);
-            
+            catch(NumberFormatException ex)
+            {
+                lblMessage.setText("Font Sizes and Image Dimensions must be a number");
+            }
             
         }
         else //If a required field is not filled out

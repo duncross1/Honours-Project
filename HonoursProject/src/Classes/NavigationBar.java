@@ -8,12 +8,12 @@ package Classes;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Ross
+/** Navigation Bar Class
+ * @author Ross Duncan
  */
 public class NavigationBar {
     
+    //Attributes
     private HashMap<String, String> links;
     private String HTML;
     private String CSS;
@@ -69,6 +69,7 @@ public class NavigationBar {
     }
     
     //METHODS
+    //Generate the full html string for the navigation bar
     public void GenerateHtml()
     {
         HTML = "<ul> \n";
@@ -81,6 +82,7 @@ public class NavigationBar {
         HTML = HTML + "</ul> \n";
     }
     
+    //Generate the full CSS string for the navigation bar
     public void GenerateCss()
     {
         CSS = "ul {\n" +

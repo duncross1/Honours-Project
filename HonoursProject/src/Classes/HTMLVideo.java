@@ -5,9 +5,8 @@
  */
 package Classes;
 
-/**
- *
- * @author Ross
+/** HTML Video Class
+ * @author Ross Duncan
  */
 public class HTMLVideo {
     
@@ -78,6 +77,7 @@ public class HTMLVideo {
         generateFullHtml();
     }
     
+    //Generate the full html string for the video
     public void generateFullHtml()
     {
         fullHtml = "<div align=\"center\">\n" +

@@ -9,24 +9,25 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFileChooser;
 
-/**
- *
- * @author Ross
+/** Page Compiler
+ * @author Ross Duncan
  */
 public class PageCompiler {
     
     //Attributes
     private String html;
     
-    
+    //Calls functions for creating the site
     public void CompilePages(Site siteIn)
     {
         Site creatingSite = siteIn;
         //Creates folders which returns a file path which is assigned as the save folder
         String saveFolderPath = CreateFolders(creatingSite);
         
+        //Call function to create site navigation bar
         NavigationBar nb = CreateNavigationBar(creatingSite);
         
+        //Loop through the site pages calling the create page function for each
         for(Map.Entry<String, Templates> pagesEntry : creatingSite.getPages().entrySet())
         {
             Templates page = pagesEntry.getValue();
@@ -34,30 +35,37 @@ public class PageCompiler {
         }
     }
     
+    //Creates the navigation bar for the site
     public NavigationBar CreateNavigationBar(Site siteIn)
     {
         NavigationBar nb = new NavigationBar();
         
+        //Creates hashmap to contain html for links to each page on the site
         HashMap<String, String> links = new HashMap<>();
-        
+        //Populates the links hashmap with the page name as the Key and the html for the link as the Value
         for(Map.Entry<String, Templates> pagesEntry : siteIn.getPages().entrySet())
         {
             String pageName = pagesEntry.getKey();
             links.put(pageName, "<li><a href=\"" + pageName + ".html\">" + pageName + "</a></li>");
         }
         
+        //Passes the links hashmap into the navigation bar class and calls the function in the class to generate the navaigation bar
         nb.setLinks(links);
         nb.GenerateHtml();
         nb.GenerateCss();
         
+        //Return the now completed navigation bar
         return nb;
                     
     }
     
+    //Creates each page of the site
     public void CreatePage(Templates pageIn, String saveFolderPathIn, NavigationBar nbIn)
     {
         Templates pageBeingCreated = pageIn;
         
+        //Depending on what template the passed in page uses calls the required functions
+        //For example a template with 2 images needs to run the copy Image function twice.
         switch(pageBeingCreated.getTemplate())
         {
             case 1:
@@ -91,7 +99,6 @@ public class PageCompiler {
         try
         {
             File newPage = new File(saveFolderPathIn + "\\" + pageIn.getPageName() + ".html");
-        
                 BufferedWriter bw = new BufferedWriter(new FileWriter(newPage));
                 bw.write(pageIn.getHTML());
                 bw.close();
@@ -102,16 +109,18 @@ public class PageCompiler {
         }
     }
     
+    //Creates folders to contain the site
     public String CreateFolders(Site siteIn)
     {
         try
         {   
             //Allows users to choose parent folder that will contain the site folder
             JFileChooser chooser = new JFileChooser();
-            //Limits the file chooser to only finding jpegs
+            //Limits the file chooser to only finding directories
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.showOpenDialog(null);
             File saveFolder = chooser.getSelectedFile();
+            //Sets saveFolderPath to the file path of the chosen folder
             String saveFolderPath = saveFolder.getAbsolutePath();
 
             //Creates folder using site name
@@ -134,10 +143,12 @@ public class PageCompiler {
         }  
     }
     
+    //Copies images needed for the site to site folder
     public HTMLImage copyImage(HTMLImage imageIn, String saveFolderPathIn)
     {
         try
         {
+            //Copies passed in image to a folder inside of the website folder called 'images'
             File image = new File(imageIn.getImageURL());
             File destination = new File(saveFolderPathIn + "\\Images\\" + imageIn.getName() + ".jpg");
             Files.deleteIfExists(destination.toPath());

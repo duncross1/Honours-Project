@@ -5,9 +5,8 @@
  */
 package Classes;
 
-/**
- *
- * @author Ross
+/** HTML Text Class
+ * @author Ross Duncan
  */
 public class HTMLText {
     
@@ -73,14 +72,14 @@ public class HTMLText {
         generateFullHtml();
     }
     
-    //Generate closing tag
+    //Generate the opening tag
     public void generateOpeningTag(String tagIn)
     {
         parts = tag.split("/");
         openingTag =  parts[0] + parts[1];
     }
     
-    //Generate full html
+    //Generate full html string for the text
     public void generateFullHtml()
     {
         fullHtml = openingTag + text + tag;

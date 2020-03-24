@@ -5,11 +5,12 @@
  */
 package Classes;
 
-/**
- *
- * @author Ross
+/** Templates Class
+ * @author Ross Duncan
  */
 public class Templates {
+    
+    //Attributes
     private int template;
     
     private HTMLText header;
@@ -181,7 +182,7 @@ public class Templates {
     
     public void fillTemplate1(HTMLText headerIn, HTMLText bodyText1In, HTMLText bodyText2In, HTMLImage image1In, String fontSize1In, String fontSize2In, String pageNameIn)
     {
-        //TEMPLATE 1
+        //TEMPLATE 1 - fills attributes needed for template 1
         template = 1;
         header = headerIn;
         bodyText1 = bodyText1In;
@@ -194,7 +195,7 @@ public class Templates {
     
     public void fillTemplate2(HTMLText headerIn, HTMLVideo videoIn, String pageNameIn)
     {
-        //TEMPLATE 2
+        //TEMPLATE 2 - fills attributes needed for template 2
         template = 2;
         header = headerIn;
         video1 = videoIn;
@@ -203,7 +204,7 @@ public class Templates {
     
     public void fillTemplate3(HTMLText headerIn, HTMLText bodyText1In, HTMLText bodyText2In, HTMLImage image1In, HTMLImage image2In, String fontSize1In, String fontSize2In, String pageNameIn)
     {
-        //TEMPLATE 3
+        //TEMPLATE 3 - fills attributes needed for template 3
         template = 3;
         header = headerIn;
         bodyText1 = bodyText1In;
@@ -217,7 +218,7 @@ public class Templates {
     
     public void fillTemplate4(HTMLText headerIn, HTMLText bodyText1In, String fontSize1In, HTMLLinkButton lb1In, String pageNameIn)
     {
-        //TEMPLATE 4
+        //TEMPLATE 4 - fills attributes needed for template 4
         template = 4;
         header = headerIn;
         bodyText1 = bodyText1In;
@@ -229,7 +230,7 @@ public class Templates {
     public void fillTemplate5(HTMLText headerIn, HTMLImage image1In, HTMLText bodyText1In, String fontSize1In, HTMLLinkButton lb1In,
             HTMLImage image2In, HTMLText bodyText2In, String fontSize2In, HTMLLinkButton lb2In, String pageNameIn)
     {
-        //TEMPLATE 5
+        //TEMPLATE 5 - fills attributes needed for template 5
         template = 5;
         header = headerIn;
         image1 = image1In;
@@ -243,6 +244,8 @@ public class Templates {
         pageName = pageNameIn;
     }
     
+    //HTML generators
+    //Generates the HTML String for template 1
     public String CompileTemplate1HTML()
     {
         html = "<!DOCTYPE html>\n" +
@@ -315,6 +318,7 @@ public class Templates {
         return html;
     }
     
+    //Generates the HTML String for template 2
     public String CompileTemplate2HTML()
     {
         html = "<!DOCTYPE html>\n" +
@@ -356,6 +360,7 @@ public class Templates {
         return html;
     }
     
+    //Generates the HTML String for template 3
     public String CompileTemplate3HTML()
     {
         html = "<!DOCTYPE html>\n" +
@@ -423,7 +428,7 @@ public class Templates {
         return html;
     }
     
-    
+    //Generates the HTML String for template 4
     public String CompileTemplate4HTML()
     {
         html = "<!DOCTYPE html>\n" +
@@ -480,6 +485,7 @@ public class Templates {
         return html;
     }
     
+    //Generates the HTML String for template 5
     public String CompileTemplate5HTML()
     {
         html = "<!DOCTYPE html>\n" +
