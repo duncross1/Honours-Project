@@ -7,6 +7,7 @@ package Views;
 
 import Classes.HTMLImage;
 import Classes.HTMLText;
+import Classes.PageCompiler;
 import Classes.Site;
 import Classes.Templates;
 import java.io.File;
@@ -20,14 +21,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Template3Editor extends javax.swing.JFrame {
 
     
-    
+    //Attributes
     private Site thisSite;
     
     public Template3Editor(Site siteIn) {
         initComponents();
         
+        //Assign passed in site
         thisSite = siteIn;
         
+        //Clear message label
         lblMessage.setText("");
     }
 
@@ -76,6 +79,7 @@ public class Template3Editor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         txtTitle.setText("Insert Title");
         txtTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -155,7 +159,7 @@ public class Template3Editor extends javax.swing.JFrame {
 
         txtPageName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        btnAddPage.setText("Add Page");
+        btnAddPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddPageButtonLong.png"))); // NOI18N
         btnAddPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddPageActionPerformed(evt);
@@ -175,17 +179,21 @@ public class Template3Editor extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPageName))
+                    .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMessage)
+                .addContainerGap(716, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(86, 86, 86)
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,61 +212,67 @@ public class Template3Editor extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtImage1Name, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(22, 22, 22))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(20, 20, 20)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtImage2Path, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnChooseFilePath2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtImage2Name))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtImage2Width, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtImage2Height, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFontSize1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFontSize2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(34, 34, 34))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnAddPage)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblMessage)))
-                            .addGap(672, 672, 672)))
-                    .addContainerGap()))
+                                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(86, 86, 86)
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(20, 20, 20)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtImage2Path, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnChooseFilePath2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel7)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtImage2Name))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel5)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtImage2Width, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(jLabel6)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtImage2Height, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtFontSize1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtFontSize2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addContainerGap()))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 724, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(616, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPageName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblMessage)
+                        .addGap(25, 25, 25)))
+                .addGap(27, 27, 27))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnBack)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBack)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,16 +320,8 @@ public class Template3Editor extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel9)
-                                .addComponent(txtFontSize2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel10)
-                                .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnAddPage)
-                                .addComponent(lblMessage))))
-                    .addContainerGap()))
+                                .addComponent(txtFontSize2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(203, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -326,7 +332,7 @@ public class Template3Editor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -342,6 +348,7 @@ public class Template3Editor extends javax.swing.JFrame {
         {
             try
             {  
+                //Check if number fields where given a number
                 int numTest = Integer.parseInt(txtFontSize1.getText());
                 numTest = Integer.parseInt(txtFontSize2.getText());
                 numTest = Integer.parseInt(txtImage1Width.getText());
@@ -349,16 +356,19 @@ public class Template3Editor extends javax.swing.JFrame {
                 numTest = Integer.parseInt(txtImage2Width.getText());
                 numTest = Integer.parseInt(txtImage2Height.getText());
                 
+                //Assign user inputs to classes
                 HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
                 HTMLText newPara = new HTMLText("</p1>", txtBodyText1.getText());
                 HTMLImage newImage = new HTMLImage(txtImage1Path.getText(), "the-image1", txtImage1Width.getText(), txtImage1Height.getText(), txtImage1Name.getText());
                 HTMLImage newImage2 = new HTMLImage(txtImage2Path.getText(), "the-image2", txtImage2Width.getText(), txtImage2Height.getText(), txtImage2Name.getText());
                 HTMLText newPara2 = new HTMLText("</p2>", txtBodyText2.getText());
 
-
+                //Pass the user inputs on to the templates class where they will be used to
+                //fill out the attributes nessacery for generating template 3
                 Templates newPage = new Templates();
                 newPage.fillTemplate3(newHeader, newPara, newPara2, newImage, newImage2, txtFontSize1.getText(), txtFontSize2.getText(), txtPageName.getText());
 
+                //Add the new page (Templates class) to the sites pages hashmap
                 HashMap<String, Templates> newPages = new HashMap<>();
                 if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
                 {
@@ -367,48 +377,89 @@ public class Template3Editor extends javax.swing.JFrame {
                 newPages.put(txtPageName.getText(), newPage);
                 thisSite.setPages(newPages);
 
-
-                NewWebsite nw = new NewWebsite(thisSite);
-                this.dispose();
-                nw.setVisible(true);
+                //If site is not a single page site
+                if(thisSite.getIsSinglePageSite() == false)
+                {
+                    //Open new website form, passing in the thisSite
+                    NewWebsite nw = new NewWebsite(thisSite);
+                    this.dispose();
+                    nw.setVisible(true);
                 }
-            catch(NumberFormatException ex)
+                else//If site is a single page site
+                {
+                    //Set site name to equal page name
+                    thisSite.setSiteName(txtPageName.getText());
+                    //Run the page compiler, passing in the current site
+                    PageCompiler pc = new PageCompiler();
+                    boolean pageCompiled = pc.CompilePages(thisSite);
+
+                    if (pageCompiled == true) //If the site was succesfully created
+                    {
+                        lblMessage.setText("Site Created");
+                    }
+                    else //if something caused an error when created the site
+                    {
+                        lblMessage.setText("An Error Occured");
+                    }
+                }
+            }
+            catch(NumberFormatException ex)//If the number fields don't contain a number (or another unexpected error occurs)
             {
+                //Set message label to display an error message
                 lblMessage.setText("Font Sizes and Image Dimensions must be a number");
             }
         }
         else //If a required field is not filled out
         {
+            //Set message label to display an error message
             lblMessage.setText("Please fill out all required fields");
         }
     }//GEN-LAST:event_btnAddPageActionPerformed
 
     private void BtnChooseFilePath1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnChooseFilePath1ActionPerformed
+        //Opens a file chooser for choosing the image
         JFileChooser chooser = new JFileChooser();
         //Limits the file chooser to only finding jpegs
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg");
         chooser.setFileFilter(imageFilter);
         chooser.showOpenDialog(null);
+        //Assigns chosen image to a file
         File imageFile = chooser.getSelectedFile();
+        //Assign chosen image file path to a string and sends it to a textfield
         String imageFilePath = imageFile.getAbsolutePath();
         txtImage1Path.setText(imageFilePath);
     }//GEN-LAST:event_BtnChooseFilePath1ActionPerformed
 
     private void btnChooseFilePath2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseFilePath2ActionPerformed
+        //Opens a file chooser for choosing the image
         JFileChooser chooser = new JFileChooser();
         //Limits the file chooser to only finding jpegs
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg");
         chooser.setFileFilter(imageFilter);
         chooser.showOpenDialog(null);
-        File imageFile = chooser.getSelectedFile();
-        String imageFilePath = imageFile.getAbsolutePath();
-        txtImage2Path.setText(imageFilePath);
+        //Assigns chosen image to a file
+        File imageFile2 = chooser.getSelectedFile();
+        //Assign chosen image file path to a string and sends it to a textfield
+        String imageFilePath2 = imageFile2.getAbsolutePath();
+        txtImage2Path.setText(imageFilePath2);
     }//GEN-LAST:event_btnChooseFilePath2ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        NewWebsite nw = new NewWebsite(thisSite);
-        this.dispose();
-        nw.setVisible(true);
+        //If site is not a single page site
+        if(thisSite.getIsSinglePageSite() == false)
+        {
+            //Open new website form, passing in the thisSite
+            NewWebsite nw = new NewWebsite(thisSite);
+            this.dispose();
+            nw.setVisible(true);
+        }
+        else//If site is a single page site
+        {
+            //Open the template select form
+            TemplateSelect ts = new TemplateSelect(thisSite);
+            this.dispose();
+            ts.setVisible(true);
+        }
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

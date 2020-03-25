@@ -16,31 +16,39 @@ import javax.swing.DefaultListModel;
  */
 public class NewWebsite extends javax.swing.JFrame {
 
-    
+    //Attributes
     private Site thisSite;
+    
     
     public NewWebsite(Site siteIn) {
         initComponents();
         
+        //Assign passed in site
         thisSite = siteIn;
         
         DefaultListModel model = new DefaultListModel(); //create a new Default list model object
+        
+        //If the site already has pages
         if(!thisSite.getPages().isEmpty())
-        {          
+        {   
+            //Load the page names into the list model
             for(Map.Entry<String, Templates> pagesEntry : thisSite.getPages().entrySet())
             {
                 model.addElement(pagesEntry.getKey());
             }
         }
-        else
+        else //If the site does not have pages
         {
+            //Load the string 'No pages' into the list model
             model.addElement("No Pages");
         }
         
+        //Assign the list model to the pages list box
         lstPages.setModel(model);
         
-        
+        //Set the title of the page to show the name of the site being created
         lblTitle.setText("New Site: " + thisSite.getSiteName());
+        //Clear the message label
         lblMessage.setText("");
     }
 
@@ -65,11 +73,12 @@ public class NewWebsite extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblTitle.setText("New Website");
 
-        btnAddPage.setText("Add Page");
+        btnAddPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddPageButton.png"))); // NOI18N
         btnAddPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddPageActionPerformed(evt);
@@ -87,7 +96,7 @@ public class NewWebsite extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Pages");
 
-        btnCreateSite.setText("Create Site");
+        btnCreateSite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CreateSiteButton.png"))); // NOI18N
         btnCreateSite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateSiteActionPerformed(evt);
@@ -100,32 +109,35 @@ public class NewWebsite extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
+                            .addGap(22, 22, 22)
                             .addComponent(lblMessage))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
+                            .addGap(27, 27, 27)
                             .addComponent(lblTitle))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addGap(44, 44, 44)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(214, 214, 214)
+                            .addComponent(jLabel2))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -135,10 +147,9 @@ public class NewWebsite extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(98, 98, 98)
+                            .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(lblMessage))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap()))
@@ -159,14 +170,26 @@ public class NewWebsite extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPageActionPerformed
+        //Open the template select form, passing in thisSite
         TemplateSelect ts = new TemplateSelect(thisSite);
         this.dispose();
         ts.setVisible(true);
     }//GEN-LAST:event_btnAddPageActionPerformed
 
     private void btnCreateSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSiteActionPerformed
+        //Run the page compiler, passing in the current site
         PageCompiler pc = new PageCompiler();
-        pc.CompilePages(thisSite);
+        boolean pageCompiled = pc.CompilePages(thisSite);
+        
+        if (pageCompiled == true) //If the site was succesfully created
+        {
+            lblMessage.setText("Site Created");
+        }
+        else //if something caused an error when created the site
+        {
+            lblMessage.setText("An Error Occured");
+        }
+        
     }//GEN-LAST:event_btnCreateSiteActionPerformed
 
     /**

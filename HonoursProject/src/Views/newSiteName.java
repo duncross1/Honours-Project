@@ -18,6 +18,7 @@ public class newSiteName extends javax.swing.JFrame {
     public newSiteName() {
         initComponents();
         
+        //Clear Message Label
         lblMessage.setText("");
     }
 
@@ -40,6 +41,7 @@ public class newSiteName extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         lblTitle.setText("Please enter a name for the new site");
 
@@ -120,9 +122,11 @@ public class newSiteName extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
+        //If site name text feild is not empty
         if(!txtNewSiteName.getText().isEmpty())
         {
-            Site newSite = new Site(null, txtNewSiteName.getText());
+            //Create a new site passing in the new site name (and null for the pages hashmap)
+            Site newSite = new Site(null, txtNewSiteName.getText(), false);
             NewWebsite nw = new NewWebsite(newSite);
             this.dispose();
             nw.setVisible(true);
@@ -130,6 +134,7 @@ public class newSiteName extends javax.swing.JFrame {
     }//GEN-LAST:event_btnContinueActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        //Open the Main Menu form
         MainMenu mm = new MainMenu();
         this.dispose();
         mm.setVisible(true);

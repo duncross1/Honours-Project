@@ -18,20 +18,29 @@ public class PageCompiler {
     private String html;
     
     //Calls functions for creating the site
-    public void CompilePages(Site siteIn)
+    public boolean CompilePages(Site siteIn)
     {
-        Site creatingSite = siteIn;
-        //Creates folders which returns a file path which is assigned as the save folder
-        String saveFolderPath = CreateFolders(creatingSite);
-        
-        //Call function to create site navigation bar
-        NavigationBar nb = CreateNavigationBar(creatingSite);
-        
-        //Loop through the site pages calling the create page function for each
-        for(Map.Entry<String, Templates> pagesEntry : creatingSite.getPages().entrySet())
+        try
         {
-            Templates page = pagesEntry.getValue();
-            CreatePage(page, saveFolderPath, nb);
+            Site creatingSite = siteIn;
+            //Creates folders which returns a file path which is assigned as the save folder
+            String saveFolderPath = CreateFolders(creatingSite);
+
+            //Call function to create site navigation bar
+            NavigationBar nb = CreateNavigationBar(creatingSite);
+
+            //Loop through the site pages calling the create page function for each
+            for(Map.Entry<String, Templates> pagesEntry : creatingSite.getPages().entrySet())
+            {
+                Templates page = pagesEntry.getValue();
+                CreatePage(page, saveFolderPath, nb, creatingSite);
+            }
+            
+            return true;
+        }
+        catch(Exception ex)
+        {
+            return false;
         }
     }
     
@@ -60,7 +69,7 @@ public class PageCompiler {
     }
     
     //Creates each page of the site
-    public void CreatePage(Templates pageIn, String saveFolderPathIn, NavigationBar nbIn)
+    public void CreatePage(Templates pageIn, String saveFolderPathIn, NavigationBar nbIn, Site siteIn)
     {
         Templates pageBeingCreated = pageIn;
         
@@ -92,9 +101,19 @@ public class PageCompiler {
             // code block     
         }
         
-        //Add the NavigationBar to the page before it is exported
-        pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarHTML£", nbIn.getHTML()));
-        pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarCSS£", nbIn.getCSS()));
+            if(siteIn.getIsSinglePageSite() == false) //If the site being created is not a single page site
+            {
+                //Add the NavigationBar to the page before it is exported
+                pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarHTML£", nbIn.getHTML()));
+                pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarCSS£", nbIn.getCSS()));
+            }
+            else //If the site being created is a single page site
+            {
+                //Remove Navigation bar Sections
+                pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarHTML£", ""));
+                pageBeingCreated.setHTML(pageBeingCreated.getHTML().replace("£NavBarCSS£", ""));
+            }
+        
         
         try
         {

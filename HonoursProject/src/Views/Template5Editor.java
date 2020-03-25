@@ -8,6 +8,7 @@ package Views;
 import Classes.HTMLImage;
 import Classes.HTMLLinkButton;
 import Classes.HTMLText;
+import Classes.PageCompiler;
 import Classes.Site;
 import Classes.Templates;
 import java.io.File;
@@ -20,13 +21,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Template5Editor extends javax.swing.JFrame {
 
+    //Attributes
     private Site thisSite;
     
     public Template5Editor(Site siteIn) {
         initComponents();
         
+        //Assign passed in site
         thisSite = siteIn;
         
+        //Clear message label
         lblMessage.setText("");
     }
 
@@ -70,10 +74,12 @@ public class Template5Editor extends javax.swing.JFrame {
         txtImage1Name = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtImage2Name = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblTitle.setText("Template 5");
@@ -133,7 +139,8 @@ public class Template5Editor extends javax.swing.JFrame {
 
         txtPageName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        btnAddPage.setText("Add Page");
+        btnAddPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddPageButtonLong.png"))); // NOI18N
+        btnAddPage.setToolTipText("");
         btnAddPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddPageActionPerformed(evt);
@@ -158,6 +165,13 @@ public class Template5Editor extends javax.swing.JFrame {
 
         txtImage2Name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,10 +179,6 @@ public class Template5Editor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(lblTitle))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -209,29 +219,40 @@ public class Template5Editor extends javax.swing.JFrame {
                                     .addComponent(lblFontSize2)
                                     .addComponent(txtFontSize2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txtImage2Path, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnSelectImage2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtImage2Name, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnSelectImage2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtImage2Name, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMessage))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(lblTitle))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAddPage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblMessage)))
+                        .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitle))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTitle)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(btnBack)))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSelectImage1)
@@ -268,15 +289,18 @@ public class Template5Editor extends javax.swing.JFrame {
                     .addComponent(txtButton1Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtButton2Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddPage)
-                    .addComponent(lblMessage))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblMessage)
+                        .addGap(44, 44, 44))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -287,7 +311,7 @@ public class Template5Editor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -303,9 +327,11 @@ public class Template5Editor extends javax.swing.JFrame {
         {
             try
             {
+                //Check if number fields where given a number
                 int numTest = Integer.parseInt(txtFontSize1.getText());
                 numTest = Integer.parseInt(txtFontSize2.getText());
             
+                //Assign user inputs to classes
                 HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
                 HTMLImage newImage1 = new HTMLImage(txtImage1Path.getText(), "the-image1", "100%", "472px", txtImage1Name.getText());
                 HTMLImage newImage2 = new HTMLImage(txtImage2Path.getText(), "the-image2", "100%", "472px", txtImage2Name.getText());
@@ -314,10 +340,13 @@ public class Template5Editor extends javax.swing.JFrame {
                 HTMLLinkButton newLb1 = new HTMLLinkButton(txtButton1Link.getText(), txtButton1Text.getText());
                 HTMLLinkButton newLb2 = new HTMLLinkButton(txtButton2Link.getText(), txtButton2Text.getText());
 
+                //Pass the user inputs on to the templates class where they will be used to
+                //fill out the attributes nessacery for generating template 5
                 Templates newPage = new Templates();
                 newPage.fillTemplate5(newHeader, newImage1, newPara1, txtFontSize1.getText(), newLb1, newImage2,
                                        newPara2, txtFontSize2.getText(), newLb2, txtPageName.getText());
 
+                //Add the new page (Templates class) to the sites pages hashmap
                 HashMap<String, Templates> newPages = new HashMap<>();
                 if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
                 {
@@ -326,42 +355,90 @@ public class Template5Editor extends javax.swing.JFrame {
                 newPages.put(txtPageName.getText(), newPage);
                 thisSite.setPages(newPages);
 
-                NewWebsite nw = new NewWebsite(thisSite);
-                this.dispose();
-                nw.setVisible(true);
+                //If site is not a single page site
+                if(thisSite.getIsSinglePageSite() == false)
+                {
+                    //Open new website form, passing in the thisSite
+                    NewWebsite nw = new NewWebsite(thisSite);
+                    this.dispose();
+                    nw.setVisible(true);
+                }
+                else//If site is a single page site
+                {
+                    //Set site name to equal page name
+                    thisSite.setSiteName(txtPageName.getText());
+                    //Run the page compiler, passing in the current site
+                    PageCompiler pc = new PageCompiler();
+                    boolean pageCompiled = pc.CompilePages(thisSite);
+
+                    if (pageCompiled == true) //If the site was succesfully created
+                    {
+                        lblMessage.setText("Site Created");
+                    }
+                    else //if something caused an error when created the site
+                    {
+                        lblMessage.setText("An Error Occured");
+                    }
+                }
             }
-            catch(NumberFormatException ex)
+            catch(NumberFormatException ex)//If the number fields don't contain a number (or another unexpected error occurs)
             {
+                //Set message label to display an error message
                 lblMessage.setText("Font Sizes must be a number");
             }
         }
         else //If a required field is not filled out
         {
+            //Set message label to display an error message
             lblMessage.setText("Please fill out all required fields");
         }
     }//GEN-LAST:event_btnAddPageActionPerformed
 
     private void btnSelectImage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectImage1ActionPerformed
+        //Opens a file chooser for choosing the image
         JFileChooser chooser = new JFileChooser();
         //Limits the file chooser to only finding jpegs
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg");
         chooser.setFileFilter(imageFilter);
         chooser.showOpenDialog(null);
+        //Assigns chosen image to a file
         File imageFile = chooser.getSelectedFile();
+        //Assign chosen image file path to a string and sends it to a textfield
         String imageFilePath = imageFile.getAbsolutePath();
         txtImage1Path.setText(imageFilePath);
     }//GEN-LAST:event_btnSelectImage1ActionPerformed
 
     private void btnSelectImage2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectImage2ActionPerformed
+        //Opens a file chooser for choosing the image
         JFileChooser chooser = new JFileChooser();
         //Limits the file chooser to only finding jpegs
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image Files", "jpg", "jpeg");
         chooser.setFileFilter(imageFilter);
         chooser.showOpenDialog(null);
+        //Assigns chosen image to a file
         File imageFile2 = chooser.getSelectedFile();
+        //Assign chosen image file path to a string and sends it to a textfield
         String imageFilePath2 = imageFile2.getAbsolutePath();
         txtImage2Path.setText(imageFilePath2);
     }//GEN-LAST:event_btnSelectImage2ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        //If site is not a single page site
+        if(thisSite.getIsSinglePageSite() == false)
+        {
+            //Open new website form, passing in the thisSite
+            NewWebsite nw = new NewWebsite(thisSite);
+            this.dispose();
+            nw.setVisible(true);
+        }
+        else//If site is a single page site
+        {
+            //Open the template select form
+            TemplateSelect ts = new TemplateSelect(thisSite);
+            this.dispose();
+            ts.setVisible(true);
+        }
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,6 +477,7 @@ public class Template5Editor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddPage;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSelectImage1;
     private javax.swing.JButton btnSelectImage2;
     private javax.swing.JLabel jLabel1;

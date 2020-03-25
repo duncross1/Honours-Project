@@ -7,6 +7,7 @@ package Views;
 
 import Classes.HTMLText;
 import Classes.HTMLVideo;
+import Classes.PageCompiler;
 import Classes.Site;
 import Classes.Templates;
 import java.util.HashMap;
@@ -16,15 +17,17 @@ import java.util.HashMap;
  */
 public class Template2Editor extends javax.swing.JFrame {
 
-    
+    //Attributes
     private Site thisSite;
     
     public Template2Editor(Site siteIn) {
         initComponents();
         
+        //Assign passed in site
         thisSite = siteIn;
         
-        lblMessage.setText(""); //Hides message label
+        //Clear message label
+        lblMessage.setText(""); 
     }
 
     /**
@@ -54,6 +57,7 @@ public class Template2Editor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("Template 2");
@@ -75,7 +79,7 @@ public class Template2Editor extends javax.swing.JFrame {
 
         lblMessage.setText("Message");
 
-        btnAddPage.setText("Add Page");
+        btnAddPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddPageButtonLong.png"))); // NOI18N
         btnAddPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddPageActionPerformed(evt);
@@ -104,48 +108,43 @@ public class Template2Editor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel3)
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblPageName)
+                                .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVideoLink, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPageName)
-                                    .addComponent(btnAddPage))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(lblMessage))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtVideoWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtVideoHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                                .addComponent(txtVideoHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtVideoLink, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMessage)
+                            .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(197, 197, 197)
                     .addComponent(jLabel1)
-                    .addContainerGap(215, Short.MAX_VALUE)))
+                    .addContainerGap(174, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BtnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtVideoLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -159,23 +158,23 @@ public class Template2Editor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPageName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPageName))
+                .addGap(9, 9, 9)
+                .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMessage)
-                    .addComponent(btnAddPage))
-                .addGap(29, 29, 29))
+                .addComponent(lblMessage)
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel1)
-                    .addContainerGap(231, Short.MAX_VALUE)))
+                    .addContainerGap(289, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,9 +185,21 @@ public class Template2Editor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
-        NewWebsite nw = new NewWebsite(thisSite);
-        this.dispose();
-        nw.setVisible(true);
+        //If site is not a single page site
+        if(thisSite.getIsSinglePageSite() == false)
+        {
+            //Open new website form, passing in the thisSite
+            NewWebsite nw = new NewWebsite(thisSite);
+            this.dispose();
+            nw.setVisible(true);
+        }
+        else//If site is a single page site
+        {
+            //Open the template select form
+            TemplateSelect ts = new TemplateSelect(thisSite);
+            this.dispose();
+            ts.setVisible(true);
+        }
     }//GEN-LAST:event_BtnBackActionPerformed
 
     private void btnAddPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPageActionPerformed
@@ -198,6 +209,7 @@ public class Template2Editor extends javax.swing.JFrame {
         {
             try
             {
+                //Check if number fields where given a number
                 int numTest = Integer.parseInt(txtVideoWidth.getText());
                 numTest = Integer.parseInt(txtVideoHeight.getText());
                 String videoURL = txtVideoLink.getText();
@@ -210,12 +222,16 @@ public class Template2Editor extends javax.swing.JFrame {
                         videoURL = videoURL.replace("watch?v=", "embed/");
                     }
 
+                    //Assign user inputs to classes
                     HTMLText newHeader = new HTMLText("</header1>", txtTitle.getText());
                     HTMLVideo newVideo = new HTMLVideo(videoURL, Integer.parseInt(txtVideoWidth.getText()), Integer.parseInt(txtVideoHeight.getText()));
 
+                    //Pass the user inputs on to the templates class where they will be used to
+                    //fill out the attributes nessacery for generating template 2
                     Templates newPage = new Templates();
                     newPage.fillTemplate2(newHeader, newVideo, txtPageName.getText());
 
+                    //Add the new page (Templates class) to the sites pages hashmap
                     HashMap<String, Templates> newPages = new HashMap<>();
                     if(!thisSite.getPages().isEmpty()) //if the pages hashmap is not empty
                     {
@@ -224,24 +240,48 @@ public class Template2Editor extends javax.swing.JFrame {
                     newPages.put(txtPageName.getText(), newPage);
                     thisSite.setPages(newPages);
 
-                    NewWebsite nw = new NewWebsite(thisSite);
-                    this.dispose();
-                    nw.setVisible(true);
-                    
+                    //If site is not a single page site
+                    if(thisSite.getIsSinglePageSite() == false)
+                    {
+                        //Open new website form, passing in the thisSite
+                        NewWebsite nw = new NewWebsite(thisSite);
+                        this.dispose();
+                        nw.setVisible(true);
+                    }
+                    else//If site is a single page site
+                    {
+                        //Set site name to equal page name
+                        thisSite.setSiteName(txtPageName.getText());
+                        //Run the page compiler, passing in the current site
+                        PageCompiler pc = new PageCompiler();
+                        boolean pageCompiled = pc.CompilePages(thisSite);
+
+                        if (pageCompiled == true) //If the site was succesfully created
+                        {
+                            lblMessage.setText("Site Created");
+                        }
+                        else //if something caused an error when created the site
+                        {
+                            lblMessage.setText("An Error Occured");
+                        }
+                    }
                 
                 }
                 else //If video link is not a youtube link
                 {
+                    //Set message label to display an error message
                     lblMessage.setText("Please enter a youtube link");
                 }
             }
-            catch(NumberFormatException ex)
+            catch(NumberFormatException ex) //If the number fields don't contain a number (or another unexpected error occurs)
             {
+                //Set message label to display an error message
                 lblMessage.setText("Video Dimensions must be a number");
             }
         }
         else //If a required field is not filled out
         {
+            //Set message label to display an error message
             lblMessage.setText("Please fill out all required fields");
         }
     }//GEN-LAST:event_btnAddPageActionPerformed
