@@ -10,6 +10,8 @@ import Classes.Site;
 import Classes.Templates;
 import java.util.Map;
 import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+import javax.swing.table.DefaultTableModel;
 
 /** New Website Form
  * @author Ross Duncan
@@ -69,6 +71,7 @@ public class NewWebsite extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnCreateSite = new javax.swing.JButton();
         lblMessage = new javax.swing.JLabel();
+        btnEditPage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,11 +89,6 @@ public class NewWebsite extends javax.swing.JFrame {
         });
 
         lstPages.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lstPages.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstPages);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -105,14 +103,33 @@ public class NewWebsite extends javax.swing.JFrame {
 
         lblMessage.setText("Message");
 
+        btnEditPage.setText("Edit Page");
+        btnEditPage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnEditPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditPageActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditPage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,37 +138,31 @@ public class NewWebsite extends javax.swing.JFrame {
                             .addComponent(lblMessage))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(27, 27, 27)
-                            .addComponent(lblTitle))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(214, 214, 214)
-                            .addComponent(jLabel2))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblTitle)))
+                    .addContainerGap(30, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAddPage, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditPage)))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(lblTitle)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(98, 98, 98)
-                            .addComponent(btnCreateSite, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblMessage))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                    .addComponent(lblMessage)
                     .addContainerGap()))
         );
 
@@ -163,7 +174,7 @@ public class NewWebsite extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,6 +202,58 @@ public class NewWebsite extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnCreateSiteActionPerformed
+
+    private void btnEditPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPageActionPerformed
+        //if a page is selected
+        if(lstPages.getSelectedValue() != null || !lstPages.getSelectedValue().equals("No Pages")) 
+        {
+            ListModel<String> model = lstPages.getModel(); //initalize and assign model
+            String selectedPage = String.valueOf(lstPages.getSelectedValue());//initialize and assign Selected page
+            
+            //Load the correct template editor, passing in the site and page
+            for(Map.Entry<String, Templates> pagesEntry : thisSite.getPages().entrySet())
+            {
+                Templates thisPage = pagesEntry.getValue();//initialize and thisPage      
+                if(thisPage.getPageName().equals(selectedPage))
+                {
+                    switch(thisPage.getTemplate())
+                    {
+                        case 1:
+                            EditTemplate1 et1 = new EditTemplate1(thisSite, thisPage);
+                            this.dispose();
+                            et1.setVisible(true);
+                        break;
+                        case 2:
+                            EditTemplate2 et2 = new EditTemplate2(thisSite, thisPage);
+                            this.dispose();
+                            et2.setVisible(true);
+                        break;
+                        case 3:
+                            EditTemplate3 et3 = new EditTemplate3(thisSite, thisPage);
+                            this.dispose();
+                            et3.setVisible(true);
+                        break;
+                        case 4:
+                            EditTemplate4 et4 = new EditTemplate4(thisSite, thisPage);
+                            this.dispose();
+                            et4.setVisible(true);
+                        break;
+                        case 5:
+                            EditTemplate5 et5 = new EditTemplate5(thisSite, thisPage);
+                            this.dispose();
+                            et5.setVisible(true);
+                        break;
+                        default:
+                        // code block     
+                    }
+                }
+            }
+        }
+        else //If no page has been selected
+        {
+            lblMessage.setText("Please Select A Page to Edit First");
+        }
+    }//GEN-LAST:event_btnEditPageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,6 +294,7 @@ public class NewWebsite extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddPage;
     private javax.swing.JButton btnCreateSite;
+    private javax.swing.JButton btnEditPage;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
