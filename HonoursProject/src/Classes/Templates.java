@@ -468,7 +468,7 @@ public class Templates {
                 
                 "\n" +
                 "<div class=\"headerContainer\">\n" +
-                "<header1>Heading</header1>\n" +
+                header.getFullHtml() + "\n" +
                 "</div>\n" +
                 "\n" +
                 "<div class=\"headerContainer\"> \n" +
@@ -547,7 +547,7 @@ public class Templates {
                 
                 "\n" +
                 "<div class=\"headerContainer\">\n" +
-                "<header1>Heading</header1>\n" +
+                header.getFullHtml() + "\n" +
                 "</div>\n" +
                 "\n" +
                 "<div class=\"row\">\n" +

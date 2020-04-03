@@ -131,6 +131,10 @@ public class newSiteName extends javax.swing.JFrame {
             this.dispose();
             nw.setVisible(true);
         }
+        else //if site name text field is empty
+        {
+            lblMessage.setText("Please enter a site name");
+        }
     }//GEN-LAST:event_btnContinueActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
